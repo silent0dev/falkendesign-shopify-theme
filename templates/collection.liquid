@@ -1,0 +1,58 @@
+{% paginate collection.products by 20 %}
+
+<div class="page-width">
+
+  <header class="grid medium-up--grid--table section-header small--text-center">
+    <div class="grid__item medium-up--one-half section-header__item">
+      <h1 class="section-header__title" style="font-size: 1.9em">
+        {{ collection.title }}
+        {% if current_tags %}
+          &ndash; {% assign title_tags = current_tags | join: ', ' %}
+          {{ title_tags }}
+        {% endif %}
+      </h1>
+      {% if collection.description != blank %}
+        <div class="section-header__subtext rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="grid__item medium-up--one-half medium-up--text-right section-header__item">
+      {% section 'collection-filters' %}
+    </div>
+  </header>
+  
+  <div class="grid grid--no-gutters grid--uniform">
+    
+    <div id="side-filter-container" class="clearfix"> 
+      <div class="side-filter-menu">    
+        {% include 'filter-menu' %}
+      </div>     
+      <div class="main-filter-content">
+
+        {% for product in collection.products %}
+        <div class="grid__item small--one-half medium-up--one-third">
+          {% include 'product-card', product: product %}
+        </div>
+        {% else %}
+        {% comment %}
+        If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item small--text-center">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+        {% endfor %}            
+      </div> 
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %} 
+
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+    </div>
+  {% endif %}
+
+</div>
+
+{% endpaginate %}
