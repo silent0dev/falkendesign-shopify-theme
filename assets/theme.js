@@ -1952,14 +1952,10 @@ window.AjaxCart = (function() {
       }
     });
 
-    console.log(cut_count);
-    console.log('cut square', square);
-
     if (is_valied) {
 
       var product_wh = $('#SingleOptionSelector-0').val().replace(' inch', '').split('x');
       var product_square = product_wh[0] * product_wh[1] * $('#Quantity').val();
-      console.log('product square', product_square);
       if (square <= product_square) {
         var params = {
           type: 'POST',
@@ -2003,8 +1999,10 @@ window.AjaxCart = (function() {
             });
           }, 1000);
         }
+        $('.cut-square-error').removeClass('active');
+        $('.cut-error').removeClass('active');
       } else {
-        $('.cut-square-error').addClass('active')
+        $('.cut-square-error').addClass('active');
       }
 
     } else {
