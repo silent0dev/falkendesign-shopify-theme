@@ -20,7 +20,7 @@
     {%- assign current_sort_order = collection.sort_by | default: collection.default_sort_by -%}
     <div class="filter-group filter-group-sort-orders {% if settings.pt_force_dropdown or pt_force_dropdown or settings.pt_sort_by_dropdown %}pt-display-dropdown{% endif %}">
       <h4>{{ pt_sort_by_text }}</h4>
-      <div class="scroll-content">
+      <div class="">
         <ul class="nav-sort-orders">
           {%- if settings.pt_sort_manual_text != blank and collection.default_sort_by == 'manual' -%}<li class="active {% if current_sort_order == 'manual' %}selected{% endif %}"><div class="collection-name"><a href="{{ request.path }}{% unless current_sort_order == 'manual' %}?sort_by=manual{% endunless %}">{% if settings.pt_show_sort_by_checkboxes %}<i class="check-icon"></i> {% endif %}{{ settings.pt_sort_manual_text }}</a></div></li>{%- endif -%}
           {%- if settings.pt_sort_price_asc_text != blank -%}<li class="active {% if current_sort_order == 'price-ascending' %}selected{% endif %}"><div class="collection-name"><a href="{{ request.path }}{% unless current_sort_order == 'price-ascending' %}?sort_by=price-ascending{% endunless %}">{% if settings.pt_show_sort_by_checkboxes %}<i class="check-icon"></i> {% endif %}{{ settings.pt_sort_price_asc_text }}</a></div></li>{%- endif -%}
@@ -57,7 +57,7 @@
     {%- assign header_handle = menu_header.first | replace: header_handle.first, '' -%}
     <div class="filter-group filter-group{{ header_handle }} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %} {{ shop.metafields.pt_filter_display[menu_header.first] }} pt-filter-mode-{{ shop.metafields.pt_filter_mode[menu_header.first] }}">
         <h4>{{ shop.metafields.pt_filter_header[menu_header.first] }}</h4>
-        <div class="scroll-content">
+        <div class="">
         <input type="text" class="fm-search-box" name="filter" placeholder="{{ pt_search_placeholder_text }}" style="display:none" autocomplete="off">
         <ul class="nav{{ header_handle }}">
             {%- for menu_item in menu_items -%}
@@ -124,7 +124,7 @@
     {%- endunless -%}
     <div class="filter-group filter-group{{ header_handle }} {% if has_selected %}has_group_selected{% endif %} {% if has_multiple_items %}has_mutliple_items{% else %}has_single_item{% endif %} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %} {{ shop.metafields.pt_filter_display[menu_header.first] }} pt-filter-mode-{{ shop.metafields.pt_filter_mode[menu_header.first] }} ">
         <h4>{{ shop.metafields.pt_filter_header[menu_header.first] }}</h4>
-        <div class="scroll-content">
+        <div class="">
         <input type="text" class="fm-search-box" name="filter" placeholder="{{ pt_search_placeholder_text }}" style="display:none" autocomplete="off">
         <ul class="nav{{ header_handle }} {% if has_selected %}has_selected{% endif %}">
             {%- if shop.metafields.pt_filter_mode[menu_header.first] == 'switcher' -%}
@@ -253,7 +253,7 @@
             {%- endfor -%}
             <div class="filter-group filter-group-tags-group-{{ tag_group | handle }} {% if has_selected %}has_group_selected{% endif %} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %}">
                 <h4>{{ tag_group }}</h4>
-                <div class="scroll-content">
+                <div class="">
                   <input type="text" class="fm-search-box" name="filter" placeholder="{{ pt_search_placeholder_text }}" style="display:none" autocomplete="off">
                     <ul class="nav-tags-group">
                         {%- for tag in collection.tags -%}
@@ -316,7 +316,7 @@
     {%- endfor -%}
     <div class="filter-group filter-group-tags-options {% if has_selected %}has_group_selected{% endif %} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %}">
         <h4>{{ pt_tags_text }}</h4>
-        <div class="scroll-content">
+        <div class="">
         <input type="text" class="fm-search-box" name="filter" placeholder="{{ pt_search_placeholder_text }}" style="display:none" autocomplete="off">
         <ul class="nav-tags-group">
             {%- for tag in collection.tags -%}
@@ -358,7 +358,7 @@
     {%- unless displayed_collection_handles contains current_collection_handle_sep or current_collection_handle == 'all' -%}
     <div class="filter-group filter-group-not-shown has_group_selected {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %}">
       <h4>{{ pt_collection_text }}</h4>
-      <div class="scroll-content">
+      <div class="">
         <ul class="nav-not-shown">
             <li class="collection-container filter-active-{{ collection.handle }} active selected">
                 <div class="collection-name">
