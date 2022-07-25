@@ -27,23 +27,8 @@
     width: 48%;
 }
 
-.product-form__cut-item--buttons button:first-child {
-    background-color: rgba(0, 36, 93, 1);
-    color: white;
-}
-
-.product-form__cut-item--buttons button:first-child:hover {
-    background-color: rgba(0, 36, 93, 0.8);
-}
-
 .product-form__cut-item--buttons button:last-child {
     margin-left: 4%;
-    background-color: #f4f4f4;
-    color: #cb6166;
-}
-
-.product-form__cut-item--buttons button:last-child:hover {
-    background-color: #d4d4d4;
 }
 
 .cut-item {
@@ -216,3 +201,117 @@
 .notification__link a {
     text-decoration: underline;
 }
+
+.custom-btn {
+    transition: all 0.2s ease;
+    background: #d2d5d8;
+    border:0;
+    font-weight: bold;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 25px;
+    position: relative;
+    outline: none;
+    padding: 3px;
+    cursor: pointer;
+    min-width: 200px;
+    animation-name: button;
+    animation-duration: 0.75s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .btn-text {
+    color: black;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    opacity: 1;
+    animation-name: button-text;
+    animation-duration: 0.75s;
+    animation-delay: 1.3s;
+    animation-fill-mode: backwards;
+  }
+  
+  .custom-btn:before,
+  .custom-btn:after,
+  .custom-btn span:before,
+  .custom-btn span:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 25px;
+  }
+  
+  .custom-btn:before {
+  /*   box-shadow: -10px -8px 20px #fff; */
+    animation-name: button-before;
+    animation-duration: 0.75s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .custom-btn:after {
+  /*   box-shadow: 10px 8px 20px #9496B0; */
+    animation-name: button-after;
+    animation-duration: 0.75s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .btn-inner {
+    max-width: 100%;
+    position: relative;
+    background: #d2d5d8;
+  /*   background: linear-gradient(165deg, rgba(255,255,255,1) 0%, rgba(210,213,216,1) 50%, rgba(210,213,216,1) 95%, rgba(148,150,176,1) 100%); */
+    padding: 1rem 2rem;
+    display: block;
+    border-radius: 25px;
+    position: relative;
+    animation-name: button-inner;
+    animation-duration: 0.75s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .custom-btn:active .btn-text {
+    font-size: 0.95rem;
+  }
+  
+  .custom-btn:active .btn-inner:before {
+     box-shadow: 4px 4px 10px inset #9496B0;
+    -webkit-box-shadow: 4px 4px 10px inset #9496B0;
+  }
+  
+  .custom-btn:active .btn-inner:after {
+    box-shadow: -4px -4px 10px inset #fff;
+    -webkit-box-shadow: -4px -4px 10px inset #fff;
+  }
+  
+  @keyframes button-before {
+    from {box-shadow: 0 0 0 #fff;}
+    to {box-shadow: -10px -8px 20px #fff;}
+  }
+  
+  @keyframes button-after {
+    from {box-shadow: 0 0 0 #9496B0;}
+    to {box-shadow: 10px 8px 20px #9496B0;}
+  }
+  
+  @keyframes button-inner {
+    from {background: #d2d5d8;}
+    to {background: linear-gradient(165deg, rgba(255,255,255,1) 0%, rgba(210,213,216,1) 50%, rgba(210,213,216,1) 95%, rgba(148,150,176,1) 100%);}
+  }
+  
+  @keyframes button {
+    from {background: #d2d5d8;}
+    to {background: linear-gradient(165deg, rgba(255,255,255,1) 10%, rgba(148,150,176,1) 100%);}
+  }
+  
+  @keyframes button-text {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

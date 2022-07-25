@@ -249,6 +249,17 @@
   {% endif %}
 {% endunless %}
 
+<style>
+  .cut-text p:first-of-type {
+    color: {{ section.settings.custom_cut_color }};
+    background: {{ section.settings.custom_cut_back_color }};
+  }
+
+  .cut-text p:last-of-type {
+    color: {{ section.settings.each_cut_color }};
+    background: {{ section.settings.each_cut_back_color }};
+  }
+</style>
 
 
 {% schema %}
@@ -393,6 +404,30 @@
         "zh-TW": "啟用產品分享"
       },
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Custom cut form"
+    },
+    {
+      "type": "color",
+      "id": "custom_cut_color",
+      "label": "Custom cut text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_cut_back_color",
+      "label": "Custom cut background color"
+    },
+    {
+      "type": "color",
+      "id": "each_cut_color",
+      "label": "Each cut text color"
+    },
+    {
+      "type": "color",
+      "id": "each_cut_back_color",
+      "label": "Each cut background color"
     }
   ]
 }
