@@ -79,6 +79,12 @@
       },
       {
         "type": "color",
+        "id": "color_header_border",
+        "label": "Border Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
         "id": "color_header_links",
         "label": {
           "da": "Links",

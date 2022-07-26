@@ -147,11 +147,22 @@
             </button>
           </form>
 
+          {% if customer %}
+            <a href="/account/logout" class="site-header__link small--hide site-header__account" title="logout">
+              {% render 'icon-login' %}
+            </a>
+          {% else %}
+            <a href="{{ routes.account_url }}" class="site-header__link small--hide site-header__account" title="login">
+              {% render 'icon-login' %}
+            </a>
+          {% endif %}
+          
           <a href="{{ routes.cart_url }}" class="site-header__link site-header__cart">
             {% include 'icon-cart' %}
             <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
             <span class="site-header__cart-indicator {% if cart.item_count == 0 %}hide{% endif %}"></span>
           </a>
+
         </div>
       </div>
     </div>
@@ -163,7 +174,7 @@
         <nav class="nav-bar small--hide" role="navigation" id="StickyNav">
           <div class="page-width">
             <div class="grid grid--table">
-              <div class="grid__item {% if shop.customer_accounts_enabled %}four-fifths{% else%}seven-eighths{% endif %}" id="SiteNavParent">
+              <div class="grid__item" id="SiteNavParent">
                 <!-- <button type="button" class="hide text-link site-nav__link site-nav__link--compressed js-drawer-open-left" id="SiteNavCompressed">
                   {% include 'icon-hamburger' %}
                   <span class="site-nav__link-menu-label">{{ 'general.drawers.menu' | t }}</span>
@@ -213,21 +224,6 @@
                     {% endif %}
                   {% endfor %}
                 </ul>
-              </div>
-              <div class="grid__item {% if shop.customer_accounts_enabled %}one-fifth{% else%}one-eighth{% endif %} text-right">
-                <div class="sticky-only" id="StickyNavSearchCart"></div>
-                {% if shop.customer_accounts_enabled %}
-                  <div class="customer-login-links sticky-hidden">
-                    {% if customer %}
-                      <a href="{{ routes.account_url }}">
-                        {{ 'layout.customer.account' | t }}
-                      </a>
-                      {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                    {% else %}
-                      {{ 'layout.customer.account' | t | customer_login_link }}
-                    {% endif %}
-                  </div>
-                {% endif %}
               </div>
             </div>
           </div>

@@ -315,3 +315,15 @@
     from {opacity: 0;}
     to {opacity: 1;}
   }
+
+  @media (min-width: 750px) {
+    .pagination {
+        margin: 40px 40px 0 270px;
+    } 
+  }
+
+  @media (max-width: 750px) {
+    .notification__inner--has-link {
+        padding: 0 10px;
+    }
+  }

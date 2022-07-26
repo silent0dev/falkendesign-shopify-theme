@@ -257,7 +257,7 @@ $color-heading: {{ settings.color_body_headings }};
 
 // Header and footer
 $color-header: {{ settings.color_header_bg }};
-$color-header-border: adaptive-color($color-header, 5%);
+$color-header-border: {{ settings.color_header_border }};
 $color-header-links: {{ settings.color_header_links }};
 $color-header-links-rgba: rgba($color-header-links, 0.6);
 $color-footer: {{ settings.color_footer_bg }};
@@ -3221,6 +3221,7 @@ input[type='search']::-webkit-search-cancel-button {
 .nav-bar {
   position: relative;
   border-top: 1px solid $color-header-border;
+  border-bottom: 1px solid $color-header-border;
   background-color: $color-header;
   z-index: $z-index-stickynav;
 
