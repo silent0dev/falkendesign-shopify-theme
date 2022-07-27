@@ -3,8 +3,9 @@
       <p>CUSTOM CUT</p>
       <p data-price="{{ all_products['cut-to-size'].price }}" id="cut-to-size-price">{{ all_products['cut-to-size'].price | money }} EACH CUT</p>
     </div>
-    <p class="cut-error">Please fill all the fields</p>
-    <p class="cut-square-error">The custom cut size is bigger than product size.</p>
+    <p class="cut-error cut-message">Please fill all the fields</p>
+    <p class="cut-square-error cut-message">The custom cut size is bigger than product size.</p>
+    <p class="cut-size-error cut-message">The width or height is too big.</p>
     <div class="cut-items {% if product.metafields.cut_options.width.size > 0 %}cut-selectors{% endif %}">
     </div>
     <div class="product-form__item product-form__item--submit product-form__cut-item--buttons">

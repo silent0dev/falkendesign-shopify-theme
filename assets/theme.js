@@ -1990,22 +1990,20 @@ window.AjaxCart = (function() {
   
           setTimeout(() => {
             $.ajax(cut_params);
-            $('.cut-input').each(function(){
-              if($(this).hasClass('product-form__quantity')) {
-                $(this).val(0);
-              } else {
-                $(this).val('');
-              }
+            $('.cut-item').each(function(){
+              $(this).find('.remove-cut_item').click();
+              $('.cut-message').removeClass('active');
             });
           }, 1000);
         }
-        $('.cut-square-error').removeClass('active');
-        $('.cut-error').removeClass('active');
+        $('.cut-message').removeClass('active');
       } else {
+        $('.cut-message').removeClass('active');
         $('.cut-square-error').addClass('active');
       }
 
     } else {
+      $('.cut-message').removeClass('active');
       $('.cut-error').addClass('active');
     }
 
