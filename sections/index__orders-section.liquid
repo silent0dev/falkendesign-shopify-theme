@@ -3,10 +3,10 @@
         <div class="order-items">
             {% for block in section.blocks %}
                 <div class="order-item">
-                    <a href="{{ block.settings.link1 }}" class="order-icon">
+                    <a href="{{ block.settings.link1 }}" class="order-icon chover">
                         {{ block.settings.icon | img_url: '250x' | img_tag }}
                     </a>
-                    <a href="{{ block.settings.link2 }}" class="order-text" style="background-color: {{ block.settings.back_color }};color: {{ block.settings.font_color }};font-size: {{ block.settings.font_size }}px">
+                    <a href="{{ block.settings.link2 }}" class="order-text chover" style="background-color: {{ block.settings.back_color }};color: {{ block.settings.font_color }};font-size: {{ block.settings.font_size }}px">
                         {{ block.settings.text }}
                     </a>
                 </div>
