@@ -17,7 +17,7 @@
   {% assign variants_with_unit_price = product.variants | where: "unit_price_measurement" %}
 
   <div class="grid product-single">
-    <div class="grid__item {% if product.images.size > 1 %}medium-up--three-fifths{% else %}medium-up--one-half{% endif %}">
+    <div class="grid__item product-single__sticky {% if product.images.size > 1 %}medium-up--three-fifths{% else %}medium-up--one-half{% endif %}">
       <div class="photos">
         <div class="photos__item photos__item--main">
           {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -79,7 +79,7 @@
       </div>
     </div>
 
-    <div class="grid__item {% if product.images.size > 1 %}medium-up--two-fifths{% else %}medium-up--one-half{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <div class="grid__item product-single__sticky {% if product.images.size > 1 %}medium-up--two-fifths{% else %}medium-up--one-half{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
       <div class="product-single__info-wrapper">
         <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
