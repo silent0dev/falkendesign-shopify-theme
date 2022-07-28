@@ -289,3 +289,22 @@ btn.on('click', function(e) {
   e.preventDefault();
   $('html, body').animate({scrollTop:0}, '300');
 });
+
+
+// filter apply
+
+$(document).on('click', '.collection-name a', function(){
+    if ($(window).width() > 767) {
+        setTimeout(() => {
+            $('.pt-apply').click();
+        }, 2500);
+    }
+});
+
+$(document).on('click', '.filter-clear', function(){
+    if ($(window).width() > 767) {
+        setTimeout(() => {
+            $('.pt-apply').click();
+        }, 2500);
+    }
+});
