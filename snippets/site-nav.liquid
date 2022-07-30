@@ -131,8 +131,8 @@
         {% assign index_where_we_need_to_break = column_number | times: links_per_column %}
         {% if link_index == index_where_we_need_to_break %}
           {% unless link_is_last %}
-            </div>
-            <div class="grid__item meganav__list one-fifth{% if display_title %} meganav__list--offset{% endif %}">
+            <!-- </div>
+            <div class="grid__item meganav__list one-fifth{% if display_title %} meganav__list--offset{% endif %}"> -->
           {% endunless %}
         {% endif %}
       {% endfor %}

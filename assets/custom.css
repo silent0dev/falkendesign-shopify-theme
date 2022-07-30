@@ -562,3 +562,47 @@ del.cart__item-total {
         margin: 20px 0 !important;
     }
 }
+
+.site-nav__dropdown-desk {
+    display: none;
+}
+
+@media (min-width: 750px) {
+    #SiteNavParent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .site-nav__link {
+        padding: 10px;
+    }
+    
+    .meganav__product {
+        display: none;
+    }
+    
+    .site-header .meganav.meganav--active {
+        background: transparent;
+    }
+    
+    .site-nav li {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .meganav__list {
+        background: white;
+        padding: 20px !important;
+        box-shadow: 0 0 10px;
+        position: absolute;
+        width: max-content !important;
+        left: 0px;
+        top: 1px;
+    }
+
+    .meganav__link {
+        padding: 0 10px;
+    }
+
+}
