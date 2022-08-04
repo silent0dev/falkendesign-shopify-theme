@@ -175,11 +175,6 @@
           <div class="page-width">
             <div class="grid grid--table">
               <div class="grid__item" id="SiteNavParent">
-                <!-- <button type="button" class="hide text-link site-nav__link site-nav__link--compressed js-drawer-open-left" id="SiteNavCompressed">
-                  {% include 'icon-hamburger' %}
-                  <span class="site-nav__link-menu-label">{{ 'general.drawers.menu' | t }}</span>
-                  <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
-                </button> -->
                 <ul class="site-nav list--inline" id="SiteNav">
                   {% for link in linklists[section.settings.main_linklist].links %}
                     {% assign child_list_handle = link.title | handleize %}
@@ -222,6 +217,29 @@
                         </a>
                       </li>
                     {% endif %}
+                  {% endfor %}
+                </ul>
+                <ul class="site-nav__desk">
+                  {% for link in linklists[section.settings.main_linklist].links %}
+                    <li class="site-nav__desk-link">
+                      <a href="{{ link.url }}" class="{% if link.active %}site-nav__desk-active{% endif %}">
+                        {{ link.title }}
+                        {% if link.links != blank %}
+                          {% include 'icon-arrow-down' %}
+                        {% endif %}
+                      </a>
+                      {% if link.links != blank %}
+                        <ul class="site-nav__desk-megamenu">
+                          {% for childlink in link.links %}
+                            <li class="site-nav__desk-megamenu-link">
+                              <a href="{{ childlink.url }}" class="{% if childlink.active %}site-nav__desk-active{% endif %}">
+                                {{ childlink.title | escape }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
                   {% endfor %}
                 </ul>
               </div>
