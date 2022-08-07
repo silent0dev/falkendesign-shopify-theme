@@ -1963,6 +1963,9 @@ window.AjaxCart = (function() {
           data: this.$form.serialize(),
           dataType: 'json',
           success: $.proxy(function(lineItem) {
+            var cartCount = Number($('.site-header__cart-indicator').text());
+            cartCount += Number($('#Quantity').val());
+            $('.site-header__cart-indicator').text(cartCount);
             this.success(lineItem);
           }, this),
           error: $.proxy(function(XMLHttpRequest, textStatus) {
@@ -1981,6 +1984,9 @@ window.AjaxCart = (function() {
             },
             dataType: 'json',
             success: $.proxy(function(lineItem) {
+              var cartCount = Number($('.site-header__cart-indicator').text());
+              cartCount += Number($('#Quantity').val());
+              $('.site-header__cart-indicator').text(cartCount);
               this.success(lineItem);
             }, this),
             error: $.proxy(function(XMLHttpRequest, textStatus) {

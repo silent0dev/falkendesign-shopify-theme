@@ -1,3 +1,5 @@
+var $slideout = $('#notif');
+
 //Product Page JS
 
 function calcPriceWithCutItems () {
@@ -18,6 +20,14 @@ function calcPriceWithCutItems () {
     $('.cut-subtotal').text(`$${Number.parseFloat(subtotal).toFixed(2)}`);
     $('.cut-total').text(`$${Number.parseFloat(total).toFixed(2)}`);
     
+}
+
+function showNotification (msg) {
+    $slideout.find('p').text(msg);
+    $slideout.addClass('visible');
+    setTimeout(() => {
+        $slideout.removeClass('visible');
+    }, 4000);
 }
 
 $(document).on('click', '.add--cut-size-item', function() {
@@ -107,7 +117,7 @@ $(document).on('click', '.add-cut_item', function(){
         var cut_width = $item.find('.product-form__width').val();
         var cut_height = $item.find('.product-form__length').val();
 
-        if (Number(cut_width) < Number(product_wh[0]) && Number(cut_height) < Number(product_wh[1])) {
+        if (Number(cut_width) <= Number(product_wh[0]) && Number(cut_height) <= Number(product_wh[1])) {
             if (square <= product_square) {
                 $('.cut-container').removeClass('active');
                 $('.cut-item').removeClass('active');
@@ -186,8 +196,12 @@ function changeProperties(data, cls) {
 }
 
 $(document).on('click', '.cart-cut-item-plus', function(){
+    var product_square = $(this).closest('td').find('p').text().split('/')[0].replace(' inch', '').split('x');
+    var qty = $(this).closest('.cart__row').find('.js-qty__input').val();
+    var ps = product_square[0] * product_square[1] * qty;
     var current_key = $(this).closest('.cart-properties__cut').find('.property-key').text().trim();
     var properties = {};
+    var cutS = 0;
     $(this).closest('td').find('.cart-properties__cut').each(function(){
         var key = $(this).find('.property-key').text().trim();
         var val = Number($(this).find('.property-value').text().trim());
@@ -195,6 +209,9 @@ $(document).on('click', '.cart-cut-item-plus', function(){
             val++;
         }
         properties[key] = val;
+        var cutWH = key.replace('Custom Cut: ', '').split('X');
+        var s = Number(cutWH[0]) * Number(cutWH[1]) * val;
+        cutS += s;
     });
 
     var data = {
@@ -203,7 +220,12 @@ $(document).on('click', '.cart-cut-item-plus', function(){
         properties: properties
     }
 
-    changeProperties(data, 'js-qty__adjust--plus');
+    if (cutS <= ps) {
+        changeProperties(data, 'js-qty__adjust--plus');
+    } else {
+        showNotification('The custom cut size is bigger than product size.');
+    }
+
 });
 
 $(document).on('click', '.cart-cut-item-minus', function(){
